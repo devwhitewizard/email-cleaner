@@ -1,9 +1,10 @@
 services:
   - type: web
-    name: email-cleaner-server
+    name: email-cleaner
     env: node
+    plan: free
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
-      - key: PORT
-        value: 5000
+      - key: NODE_VERSION
+        value: 20.11.0
