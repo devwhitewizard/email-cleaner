@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  email-cleaner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: email-cleaner-app
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+    restart: unless-stopped
