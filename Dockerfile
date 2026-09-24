@@ -10,8 +10,6 @@ COPY client/package.json client/package-lock.json ./client/
 
 # Install all dependencies (including devDependencies)
 RUN npm install
-RUN npm install --prefix server
-RUN npm install --prefix client
 
 # Copy source code
 COPY . .
@@ -31,7 +29,7 @@ COPY package.json ./
 COPY server/package.json ./server/
 
 # Install production dependencies for server
-RUN npm install --prefix server --only=production
+RUN npm install --prefix server --omit=dev
 
 # Copy built server and client assets from builder stage
 COPY --from=builder /app/server/dist ./server/dist
